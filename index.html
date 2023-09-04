@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/0.6.6/chartjs-plugin-zoom.js"></script>
+    <div style="width: 600px">
+      <canvas id="chart"></canvas>
+    </div>
+    <script>
+      const config = {
+        type: "line",
+        data: {
+          labels: [
+            new Date("2023-08-20"),
+            new Date("2023-08-25"),
+            new Date("2023-08-30"),
+            new Date("2023-09-01"),
+            new Date("2023-09-03"),
+            new Date("2023-09-04"),
+          ],
+          datasets: [
+            {
+              label: "A11 - Water Temp",
+              data: [55, 60, 50, 45, 60, 55, 70],
+              borderColor: "#D4213D",
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            xAxes: [
+              {
+                type: "time",
+              },
+            ],
+          },
+          pan: {
+            enabled: true,
+            mode: "xy",
+          },
+          zoom: {
+            enabled: true,
+            mode: "x", // or 'x' for "drag" version
+          },
+        },
+      };
+
+      window.onload = function () {
+        new Chart(document.getElementById("chart"), config);
+      };
+    </script>
+  </body>
+</html>
